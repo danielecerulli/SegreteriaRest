@@ -64,4 +64,13 @@ public class Studente {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private CorsoDiLaurea corsoDiLaurea;
 
+	@Override
+	public String toString() {
+		return "Studente [matricola: " + matricola + ", nome: " + nome + ", cognome: " + cognome + ", dataNascita: "
+				+ dataNascita + ", indirizzo: " + indirizzo + ", citta: " + citta + ", email: " + email
+				+ ", corsoDiLaurea: " + corsoDiLaurea.getCodice() + " Materia: " + corsoDiLaurea.getNome() + " Numero Esami: " + corsoDiLaurea.getNumeroEsami();
+	}
+    
+    
+
 }

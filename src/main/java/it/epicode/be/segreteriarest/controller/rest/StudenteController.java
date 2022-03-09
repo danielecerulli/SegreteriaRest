@@ -1,4 +1,4 @@
-package it.epicode.be.segreteriarest.controller;
+package it.epicode.be.segreteriarest.controller.rest;
 
 import java.util.Optional;
 
@@ -17,20 +17,20 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import it.epicode.be.segreteriarest.model.CorsoDiLaurea;
-import it.epicode.be.segreteriarest.service.CorsoDiLaureaService;
+import it.epicode.be.segreteriarest.model.Studente;
+import it.epicode.be.segreteriarest.service.StudenteService;
 
 @Controller
 @RequestMapping("/api")
-public class CorsoController {
+public class StudenteController {
 	
 	@Autowired
-	private CorsoDiLaureaService corsoService;
+	private StudenteService studenteService;
 	
-	@GetMapping(path = "/corso")
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	public ResponseEntity<Page<CorsoDiLaurea>> findAll(Pageable pageable) {
-		Page<CorsoDiLaurea> findAll = corsoService.findAll(pageable);
+	@GetMapping(path = "/studente")
+	//@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+	public ResponseEntity<Page<Studente>> findAll(Pageable pageable) {
+		Page<Studente> findAll = studenteService.findAll(pageable);
 		
 		if (findAll.hasContent()) {
 			return new ResponseEntity<>(findAll, HttpStatus.OK);
@@ -40,10 +40,10 @@ public class CorsoController {
 	
 	}
 	
-	@GetMapping(path = "/corso/{id}")
+	@GetMapping(path = "/studente/{id}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	public ResponseEntity<CorsoDiLaurea> findById(@PathVariable(required = true) Long id) {
-		Optional<CorsoDiLaurea> find = corsoService.findById(id);
+	public ResponseEntity<Studente> findById(@PathVariable(required = true) Long id) {
+		Optional<Studente> find = studenteService.findById(id);
 
 		if (find.isPresent()) { 
 			return new ResponseEntity<>(find.get(), HttpStatus.OK);
@@ -53,27 +53,27 @@ public class CorsoController {
 
 	}
 	
-	@PostMapping(path = "/corso")
+	@PostMapping(path = "/studente")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ResponseEntity<CorsoDiLaurea> save(@RequestBody CorsoDiLaurea corso) {
-		CorsoDiLaurea save = corsoService.save(corso);
+	public ResponseEntity<Studente> save(@RequestBody Studente studente) {
+		Studente save = studenteService.save(studente);
 		return new ResponseEntity<>(save, HttpStatus.OK);
 
 	}
 	
-	@PutMapping(path = "/corso/{id}")
+	@PutMapping(path = "/studente/{id}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ResponseEntity<CorsoDiLaurea> update(@PathVariable Long id, @RequestBody CorsoDiLaurea corso) {
-		CorsoDiLaurea save = corsoService.update(id, corso);
+	public ResponseEntity<Studente> update(@PathVariable Long id, @RequestBody Studente studente) {
+		Studente save = studenteService.update(id, studente);
 		return new ResponseEntity<>(save, HttpStatus.OK);
 
 	}
 	
-	@DeleteMapping(path = "/corso/{id}")
+	@DeleteMapping(path = "/studente/{id}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
-		corsoService.delete(id);
-		return new ResponseEntity<>("Corso deleted", HttpStatus.OK);
+		studenteService.delete(id);
+		return new ResponseEntity<>("Studente deleted", HttpStatus.OK);
 
 	}
 

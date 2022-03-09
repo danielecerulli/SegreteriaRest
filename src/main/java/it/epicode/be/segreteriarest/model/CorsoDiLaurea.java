@@ -48,4 +48,11 @@ public class CorsoDiLaurea {
 	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	private List<Studente> studenti;
 
+	@Override
+	public String toString() {
+		return "CorsoDiLaurea [codice: " + codice + ", nome: " + nome + ", indirizzo: " + indirizzo + ", numeroEsami: "
+				+ numeroEsami + ", studenti: " + studenti + "]";
+	}
+		
+
 }
