@@ -59,10 +59,18 @@ public class Studente {
 	@Email
 	private String email;
     
+    @OneToOne(mappedBy = "studente")
+    private Libretto libretto;
+    
     @NotNull
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}) // TOGLIERE i Cascades dalle relazioni per fare i save singoli
     private CorsoDiLaurea corsoDiLaurea;
+    
+    @NotNull
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}) // TOGLIERE i Cascades dalle relazioni per fare i save singoli
+    private Docente docente; // COMMENTA PER FARE I SAVE SINGOLI
 
 	@Override
 	public String toString() {

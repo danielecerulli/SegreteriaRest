@@ -15,6 +15,15 @@
    <table width="100%">
      <thead>
         <tr>
+        	<th class="header">Matricola</th>
+        	<th class="header">Nome</th>
+        	<th class="header">Cognome</th>
+        	<th class="header">Data di nascita</th>
+        	<th class="header">Email</th>
+        	<th class="header">Indirizzo</th>
+        	<th class="header">Città</th>
+        	<th class="header">Codice corso</th>
+        	<th class="header">Nome Corso di Laurea</th>
         </tr>
       </thead>
       <tbody>
@@ -28,6 +37,7 @@
                <td th:text="${studente.citta}"></td>
                <td th:text="${studente.corsoDiLaurea.codice}"></td>
                <td th:text="${studente.corsoDiLaurea.nome}"></td>
+               <!-- <td><a th:href="@{/studenti/mostraFormAggiorna/{matricola}(matricola=${studente.matricola})}">Aggiorna</i></a></td> -->
             </tr>
        </tbody>
    </table>

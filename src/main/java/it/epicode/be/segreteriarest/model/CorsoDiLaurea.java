@@ -6,6 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -47,6 +50,9 @@ public class CorsoDiLaurea {
 	@OneToMany(mappedBy = "corsoDiLaurea")
 	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	private List<Studente> studenti;
+	
+	/*@ManyToMany(mappedBy = "corsiDiLaurea")
+	private List<Docente> docenti;*/ // SCOMMENTA PER FARE I SAVE SINGOLARMENTE
 
 	@Override
 	public String toString() {

@@ -6,9 +6,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
-import it.epicode.be.segreteriarest.model.ArchivioDati;
 import it.epicode.be.segreteriarest.model.CorsoDiLaurea;
 import it.epicode.be.segreteriarest.model.Docente;
 import it.epicode.be.segreteriarest.model.Libretto;
@@ -19,59 +19,39 @@ import it.epicode.be.segreteriarest.repository.LibrettoRepository;
 import it.epicode.be.segreteriarest.repository.StudenteRepository;
 import lombok.extern.slf4j.Slf4j;
 
-@Component
+/*@Component
 @Slf4j
-public class DataLoader implements CommandLineRunner {
+public class DataLoaderValerio implements CommandLineRunner {
 
 	@Autowired
 	StudenteRepository studenteRepo;
 
 	@Autowired
-	CorsoLaureaRepository corsoRepo;
-
-	@Autowired
-	DocenteRepository docenteRepo;
+	CorsoLaureaRepository corsodilaureaRepo;
 
 	@Autowired
 	LibrettoRepository librettoRepo;
 
+	@Autowired
+	DocenteRepository docenteRepo;
+
 	@Override
 	public void run(String... args) throws Exception {
-		
-		// CORSI
+
 		CorsoDiLaurea corso = new CorsoDiLaurea();
 		corso.setCodice("A234");
 		corso.setNome("Informatica");
 		corso.setIndirizzo("Tecnologie per il Web");
 		corso.setNumeroEsami(20);
 		
+
 		CorsoDiLaurea corso1 = new CorsoDiLaurea();
 		corso1.setCodice("D457");
 		corso1.setNome("Fisica");
-		corso1.setIndirizzo("Studia le interazioni fisiche");
+		corso1.setIndirizzo("Tecnologie per la fisica");
 		corso1.setNumeroEsami(18);
 		
-		List<CorsoDiLaurea> corsiDocente = new ArrayList<>();
-		corsiDocente.add(corso);
-		
-		List<CorsoDiLaurea> corsiDocente1 = new ArrayList<>();
-		corsiDocente.add(corso1);
-		
-		// DOCENTI
-		Docente docente = new Docente();
-		docente.setNome("Gianni");
-		docente.setCognome("Morandi");
-		//docente.setCorsiDiLaurea(corsiDocente);
-		//docenteRepo.save(docente);
-		
-		Docente docente1 = new Docente();
-		docente1.setNome("Giorgio");
-		docente1.setCognome("Giorgioni");
-		//docente1.setCorsiDiLaurea(corsiDocente1);
-		//docenteRepo.save(docente1);
-		
-		
-		// STUDENTI
+
 		Studente studente = new Studente();
 		studente.setMatricola("BA345");
 		studente.setNome("Mario");
@@ -81,10 +61,6 @@ public class DataLoader implements CommandLineRunner {
 		studente.setCitta("Roma");
 		studente.setEmail("m.rossi@email.em");
 		studente.setCorsoDiLaurea(corso);
-		studente.setDocente(docente);
-		
-		log.info("Saved studente: " + studente.toString());
-		//studenteRepo.save(studente);
 
 		Studente studente1 = new Studente();
 		studente1.setMatricola("AT281");
@@ -95,23 +71,42 @@ public class DataLoader implements CommandLineRunner {
 		studente1.setCitta("Latina");
 		studente1.setEmail("g.verdi@email.em");
 		studente1.setCorsoDiLaurea(corso1);
-		studente1.setDocente(docente1);
+
+		studenteRepo.save(studente);
+		studenteRepo.save(studente1);
+		corsodilaureaRepo.save(corso);
+		corsodilaureaRepo.save(corso1);
+
+		List<CorsoDiLaurea> corsiDocente = new ArrayList<>();
+		corsiDocente.add(corso);
+
+		List<CorsoDiLaurea> corsiDocente1 = new ArrayList<>();
+		corsiDocente.add(corso1);
+
+		Docente docente = new Docente();
+		docente.setNome("Martino");
+		docente.setCognome("Martello");
+		docente.setCorsoDiLaurea(corsiDocente);
 		
-		log.info("Saved studente: " + studente1.toString());
-		//studenteRepo.save(studente1);
+
+		Docente docente1 = new Docente();
+		docente1.setNome("Antonio");
+		docente1.setCognome("Pagano");
+		docente1.setCorsoDiLaurea(corsiDocente1);
 		
-		// LIBRETTO
+		docenteRepo.save(docente);
+		docenteRepo.save(docente1);
+
 		Libretto libretto = new Libretto();
-		libretto.setCodiceLibretto("ABC123ZZ");
+		libretto.setCodiceLibretto("ABC123");
 		libretto.setStudente(studente);
 		librettoRepo.save(libretto);
-		log.info("Saved Libretto: " + libretto.toString());
-		
+
 		Libretto libretto1 = new Libretto();
-		libretto1.setCodiceLibretto("DEF456ZZ");
+		libretto1.setCodiceLibretto("ABC456");
 		libretto1.setStudente(studente1);
 		librettoRepo.save(libretto1);
-		log.info("Saved Libretto: " + libretto1.toString());
+
 	}
-	
-}
+
+}*/

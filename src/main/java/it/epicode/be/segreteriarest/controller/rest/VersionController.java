@@ -10,7 +10,7 @@ public class VersionController {
 
 	@GetMapping("/version")
 	public String showVersion() {
-		return "1.0";
+		return "2.0";
 	}
 
 }
